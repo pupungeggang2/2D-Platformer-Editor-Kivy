@@ -13,3 +13,6 @@ def display():
 
 def mouse_up(x, y, button):
     pass
+
+def key_down(key):
+    pass

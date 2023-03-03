@@ -26,6 +26,10 @@ def load_font():
 
 def load_image():
     asset.Img.Icon.new = pygame.image.load('Image/Icon/New.png')
+    asset.Img.Icon.load = pygame.image.load('Image/Icon/Load.png')
+    asset.Img.Icon.save = pygame.image.load('Image/Icon/Save.png')
+
+    asset.Img.Icon.close = pygame.image.load('Image/Icon/Close.png')
 
 def main():
     while True:
@@ -60,6 +64,18 @@ def input_handle():
 
             elif var.scene == 'play':
                 sceneplay.mouse_up(x, y, button)
+
+        if event.type == pygame.KEYDOWN:
+            key = event.key
+
+            if var.scene == 'title':
+                scenetitle.key_down(key)
+            
+            elif var.scene == 'edit':
+                sceneedit.key_down(key)
+
+            elif var.scene == 'play':
+                sceneplay.key_down(key)
 
 init()
 main()

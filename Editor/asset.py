@@ -6,3 +6,5 @@ class Img():
 
         play = None
         stop = None
+
+        close = None

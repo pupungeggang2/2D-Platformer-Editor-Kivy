@@ -27,4 +27,7 @@ def mouse_up(x, y, button):
             if physics.point_inside_rect_array(x, y, UI.new_button):
                 var.scene = 'edit'
                 var.state = ''
-                var.Editor.file_name = ''
+                var.file_name = ''
+
+def key_down(key):
+    pass

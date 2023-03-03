@@ -6,6 +6,15 @@ lang = 'en'
 
 scene = 'title'
 state = ''
+click_mode = ''
 
-class Editor():
-    file_name = ''
+file_name = ''
+
+editor = {
+    'start_position' : [],
+    'wall' : [],
+    'block' : [],
+    'thing' : [],
+}
+
+save_textbox = ''
