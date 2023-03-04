@@ -1,4 +1,5 @@
 import pygame
+import json
 
 import asset
 import var
@@ -33,6 +34,7 @@ def mouse_up(x, y, button):
                 var.scene = 'edit'
                 var.state = ''
                 var.file_name = ''
+                var.editor = json.loads(json.dumps(const.empty_editor))
 
             if physics.point_inside_rect_array(x, y, UI.load_button):
                 var.state = 'load'
