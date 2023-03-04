@@ -15,6 +15,7 @@ def loop():
 def display():
     var.screen.fill(const.Color.white)
     draw.draw_upper_bar()
+    draw.draw_file_name_bar()
     draw.draw_lower_bar()
     draw.draw_left_bar()
     draw.draw_game_screen()

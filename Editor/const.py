@@ -7,3 +7,10 @@ class Font():
     title = None
     main_1 = None
     main_2 = None
+
+empty_editor = {
+    'start_position' : [],
+    'wall' : [],
+    'block' : [],
+    'thing' : [],
+}

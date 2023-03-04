@@ -11,6 +11,10 @@ def draw_upper_bar():
     var.screen.blit(asset.Img.Icon.load, UI.Upper_Bar.load)
     var.screen.blit(asset.Img.Icon.save, UI.Upper_Bar.save)
 
+def draw_file_name_bar():
+    pygame.draw.rect(var.screen, const.Color.black, UI.File_Name_Bar.rect, 2)
+    var.screen.blit(const.Font.title.render(var.file_name, False, const.Color.black), UI.File_Name_Bar.text)
+
 def draw_left_bar():
     pygame.draw.rect(var.screen, const.Color.black, UI.Left_Bar.rect, 2)
 
@@ -38,3 +42,23 @@ def draw_save_window():
 
     var.screen.blit(const.Font.title.render('Save', False, const.Color.black), UI.Save_Window.text_save)
     pygame.draw.rect(var.screen, const.Color.black, UI.Save_Window.button_save, 2)
+
+def draw_load_window():
+    pygame.draw.rect(var.screen, const.Color.white, UI.Load_Window.rect)
+    pygame.draw.rect(var.screen, const.Color.black, UI.Load_Window.rect, 2)
+
+    var.screen.blit(const.Font.title.render('Load', False, const.Color.black), UI.Load_Window.window_title)
+    var.screen.blit(asset.Img.Icon.close, UI.Load_Window.close)
+
+    for i in range(6):
+        pygame.draw.rect(var.screen, const.Color.black, UI.Load_Window.file_list_rect[i], 2)
+
+    for i in range(6):
+        if i < len(var.file_list):
+            var.screen.blit(const.Font.title.render(var.file_list[var.load_page_number * 6 + i], False, const.Color.black), UI.Load_Window.file_list_text[i])
+
+    pygame.draw.rect(var.screen, const.Color.black, UI.Load_Window.load_button, 2)
+    var.screen.blit(const.Font.title.render('Load', False, const.Color.black), UI.Load_Window.load_text)
+
+    if var.load_selected_item > -1:
+        pygame.draw.rect(var.screen, const.Color.green, UI.Load_Window.file_list_rect[var.load_selected_item], 2)
