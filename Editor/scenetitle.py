@@ -35,6 +35,11 @@ def mouse_up(x, y, button):
                 var.state = ''
                 var.file_name = ''
                 var.editor = json.loads(json.dumps(const.empty_editor))
+                var.pointer_mode = 'pointer'
+                var.tab_mode = 'block'
+                var.selected_block = -1
+                var.selected_thing = -1
+                var.selected_goal = -1
 
             if physics.point_inside_rect_array(x, y, UI.load_button):
                 var.state = 'load'
@@ -58,6 +63,11 @@ def mouse_up(x, y, button):
                         var.scene = 'edit'
                         var.state = ''
                         var.click_mode = ''
+                        var.pointer_mode = 'pointer'
+                        var.tab_mode = 'block'
+                        var.selected_block = -1
+                        var.selected_thing = -1
+                        var.selected_goal = -1
 
 def key_down(key):
     pass

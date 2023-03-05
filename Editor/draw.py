@@ -10,6 +10,9 @@ def draw_upper_bar():
     var.screen.blit(asset.Img.Icon.new, UI.Upper_Bar.new)
     var.screen.blit(asset.Img.Icon.load, UI.Upper_Bar.load)
     var.screen.blit(asset.Img.Icon.save, UI.Upper_Bar.save)
+    var.screen.blit(asset.Img.Icon.pointer, UI.Upper_Bar.pointer)
+    var.screen.blit(asset.Img.Icon.brush, UI.Upper_Bar.brush)
+    var.screen.blit(asset.Img.Icon.erase, UI.Upper_Bar.erase)
 
 def draw_file_name_bar():
     pygame.draw.rect(var.screen, const.Color.black, UI.File_Name_Bar.rect, 2)
@@ -20,9 +23,11 @@ def draw_left_bar():
 
 def draw_game_screen():
     pygame.draw.rect(var.screen, const.Color.black, UI.Game_Screen.rect, 2)
+    var.screen.blit(asset.Img.player, [UI.Game_Screen.rect[0] + var.editor['start_position'][0], UI.Game_Screen.rect[1] + var.editor['start_position'][1]])
 
 def draw_lower_bar():
     pygame.draw.rect(var.screen, const.Color.black, UI.Lower_Bar.rect, 2)
+    var.screen.blit(const.Font.title.render(var.pointer_mode, False, const.Color.black), UI.Lower_Bar.text_mode)
 
 def draw_save_window():
     pygame.draw.rect(var.screen, const.Color.white, UI.Save_Window.rect)

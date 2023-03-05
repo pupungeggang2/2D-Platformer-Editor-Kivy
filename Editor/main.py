@@ -28,8 +28,12 @@ def load_image():
     asset.Img.Icon.new = pygame.image.load('Image/Icon/New.png')
     asset.Img.Icon.load = pygame.image.load('Image/Icon/Load.png')
     asset.Img.Icon.save = pygame.image.load('Image/Icon/Save.png')
-
+    asset.Img.Icon.pointer = pygame.image.load('Image/Icon/Pointer.png')
+    asset.Img.Icon.brush = pygame.image.load('Image/Icon/Brush.png')
+    asset.Img.Icon.erase = pygame.image.load('Image/Icon/Erase.png')
     asset.Img.Icon.close = pygame.image.load('Image/Icon/Close.png')
+
+    asset.Img.player = pygame.image.load('Image/Player.png')
 
 def main():
     while True:

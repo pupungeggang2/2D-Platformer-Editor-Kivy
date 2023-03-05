@@ -19,6 +19,9 @@ class Upper_Bar():
     new = [0, 0, 40, 40]
     load = [40, 0, 40, 40]
     save = [80, 0, 40, 40]
+    pointer = [120, 0, 40, 40]
+    brush = [160, 0, 40, 40]
+    erase = [200, 0, 40, 40]
 
 class File_Name_Bar():
     rect = [0, 40, 1280, 40]
@@ -26,12 +29,16 @@ class File_Name_Bar():
 
 class Left_Bar():
     rect = [0, 80, 480, 600]
+    tab_block = [0, 80, 80, 80]
+    tab_thing = [80, 80, 80, 80]
+    tab_goal = [80, 80, 80, 80]
 
 class Game_Screen():
     rect = [480, 80, 800, 600]
 
 class Lower_Bar():
     rect = [0, 680, 1280, 40]
+    text_mode = [24, 684]
 
 class Save_Window():
     rect = [320, 240, 640, 240]

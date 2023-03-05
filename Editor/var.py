@@ -7,6 +7,11 @@ lang = 'en'
 scene = 'title'
 state = ''
 click_mode = ''
+pointer_mode = 'pointer'
+tab_mode = 'block'
+selected_block = -1
+selected_thing = -1
+selected_goal = -1
 
 file_name = ''
 file_list = []
