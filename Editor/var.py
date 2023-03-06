@@ -4,11 +4,16 @@ FPS = 60
 clock = None
 lang = 'en'
 
+mouse_pressed = True
+
+# Mode Variables
 scene = 'title'
 state = ''
 click_mode = ''
 pointer_mode = 'pointer'
 tab_mode = 'block'
+
+# Variables from Editing
 selected_block = -1
 selected_thing = -1
 selected_goal = -1

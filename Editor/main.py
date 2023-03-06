@@ -32,8 +32,21 @@ def load_image():
     asset.Img.Icon.brush = pygame.image.load('Image/Icon/Brush.png')
     asset.Img.Icon.erase = pygame.image.load('Image/Icon/Erase.png')
     asset.Img.Icon.close = pygame.image.load('Image/Icon/Close.png')
+    asset.Img.Icon.move = pygame.image.load('Image/Icon/Move.png')
+
+    asset.Img.Icon.block = pygame.image.load('Image/Icon/Block.png')
+    asset.Img.Icon.coin = pygame.image.load('Image/Icon/Coin.png')
+    asset.Img.Icon.flag = pygame.image.load('Image/Icon/Flag.png')
+    asset.Img.Icon.background = pygame.image.load('Image/Icon/Background.png')
+
+    asset.Img.Icon.play = pygame.image.load('Image/Icon/Play.png')
+    asset.Img.Icon.pause = pygame.image.load('Image/Icon/Pause.png')
+    asset.Img.Icon.stop = pygame.image.load('Image/Icon/Stop.png')
 
     asset.Img.player = pygame.image.load('Image/Player.png')
+
+    asset.Img.block[1] = pygame.image.load('Image/Block/Dirt.png')
+    asset.Img.block[2] = pygame.image.load('Image/Block/Grass.png')
 
 def main():
     while True:
@@ -68,6 +81,19 @@ def input_handle():
 
             elif var.scene == 'play':
                 sceneplay.mouse_up(x, y, button)
+
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            x, y = pygame.mouse.get_pos()
+            button = event.button
+
+            if var.scene == 'edit':
+                sceneedit.mouse_down(x, y, button)
+
+        if event.type == pygame.MOUSEMOTION:
+            x, y = pygame.mouse.get_pos()
+
+            if var.scene == 'edit':
+                sceneedit.mouse_motion(x, y)
 
         if event.type == pygame.KEYDOWN:
             key = event.key

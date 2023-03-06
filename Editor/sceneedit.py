@@ -29,8 +29,38 @@ def display():
 
     pygame.display.flip()
 
+def mouse_down(x, y, button):
+    if button == 1:
+        var.mouse_pressed = True
+
+def mouse_motion(x, y):
+    if var.mouse_pressed == True:
+        if physics.point_inside_rect_array(x, y, UI.Game_Screen.rect):
+            if var.pointer_mode == 'brush':
+                if var.tab_mode == 'block':
+                    if var.selected_block != -1:
+                        row = (y - UI.Game_Screen.rect[1]) // 40
+                        column = (x - UI.Game_Screen.rect[0]) // 40
+
+                        var.editor['block'][row][column] = const.button_list_block[var.selected_block]
+                        var.editor['wall'][row][column] = 1
+
+            elif var.pointer_mode == 'erase':
+                if var.tab_mode == 'block':
+                    row = (y - UI.Game_Screen.rect[1]) // 40
+                    column = (x - UI.Game_Screen.rect[0]) // 40
+                    var.editor['block'][row][column] = 0
+                    var.editor['wall'][row][column] = 0
+
+            elif var.pointer_mode == 'move':
+                if physics.point_inside_rect_array(x, y, UI.Game_Screen.rect):
+                    if x - UI.Game_Screen.rect[0] - 16 >= 0 and x - UI.Game_Screen.rect[0] - 16 <= 768 and y - UI.Game_Screen.rect[1] - 16 >= 0 and y - UI.Game_Screen.rect[1] - 16 <= 568:
+                        var.editor['start_position'] = [x - UI.Game_Screen.rect[0] - 16, y - UI.Game_Screen.rect[1] - 16]
+
 def mouse_up(x, y, button):
     if button == 1:
+        var.mouse_pressed = False
+
         if var.state == '':
             if physics.point_inside_rect_array(x, y, UI.Upper_Bar.save):
                 if var.file_name == '':
@@ -56,6 +86,29 @@ def mouse_up(x, y, button):
                 var.load_page_number = 0
                 var.load_selected_item = -1
 
+            # Edit Icons
+            if physics.point_inside_rect_array(x, y, UI.Upper_Bar.pointer):
+                var.pointer_mode = 'pointer'
+
+            elif physics.point_inside_rect_array(x, y, UI.Upper_Bar.brush):
+                var.pointer_mode = 'brush'
+
+            elif physics.point_inside_rect_array(x, y, UI.Upper_Bar.erase):
+                var.pointer_mode = 'erase'
+
+            elif physics.point_inside_rect_array(x, y, UI.Upper_Bar.move):
+                var.pointer_mode = 'move'
+
+            # Left Bar
+            if physics.point_inside_rect_array(x, y, UI.Left_Bar.rect):
+                if var.tab_mode == 'block':
+                    for i in range(0, len(const.button_list_block)):
+                        row = i // 6
+                        column = i % 6
+                        
+                        if physics.point_inside_rect(x, y, UI.Left_Bar.button_start[0] + column * 80, UI.Left_Bar.button_start[1] + row * 80, 80, 80):
+                            var.selected_block = i
+
         elif var.state == 'save':
             if physics.point_inside_rect_array(x, y, UI.Save_Window.close):
                 var.state = ''
@@ -71,6 +124,7 @@ def mouse_up(x, y, button):
                 if var.save_textbox != '':
                     save.save_file(var.save_textbox)
                     var.file_name = var.save_textbox
+                    var.state = ''
 
         elif var.state == 'load':
             if physics.point_inside_rect_array(x, y, UI.Load_Window.close):

@@ -22,6 +22,8 @@ class Upper_Bar():
     pointer = [120, 0, 40, 40]
     brush = [160, 0, 40, 40]
     erase = [200, 0, 40, 40]
+    move = [240, 0, 40, 40]
+    play = [280, 0, 40, 40]
 
 class File_Name_Bar():
     rect = [0, 40, 1280, 40]
@@ -30,8 +32,14 @@ class File_Name_Bar():
 class Left_Bar():
     rect = [0, 80, 480, 600]
     tab_block = [0, 80, 80, 80]
+    icon_block = [20, 100]
     tab_thing = [80, 80, 80, 80]
-    tab_goal = [80, 80, 80, 80]
+    icon_thing = [100, 100]
+    tab_goal = [160, 80, 80, 80]
+    icon_goal = [180, 100]
+    tab_background = [240, 80, 80, 80]
+    icon_background = [260, 100]
+    button_start = [0, 160]
 
 class Game_Screen():
     rect = [480, 80, 800, 600]

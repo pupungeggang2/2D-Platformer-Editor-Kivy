@@ -2,11 +2,16 @@ class Color():
     black = (0, 0, 0)
     green = (0, 255, 0)
     white = (255, 255, 255)
+    gray = (127, 127, 127)
 
 class Font():
     title = None
     main_1 = None
     main_2 = None
+
+button_list_block = [1, 2]
+button_list_thing = []
+button_list_goal = []
 
 empty_editor = {
     'start_position' : [0, 0],
