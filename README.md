@@ -1,1 +1,1 @@
-# 2D-Platformer-Editor-Kivy
+# 2D-Platformer-Editor-Pygame
