@@ -58,3 +58,14 @@ class Save_Window():
     file_name = [504, 324]
     button_save = [800, 320, 120, 40]
     text_save = [824, 324]
+
+class Upper_Play():
+    play = [580, 0, 40, 40]
+    pause = [620, 0, 40, 40]
+    stop = [660, 0, 40, 40]
+
+class Game_Screen_Play():
+    rect = [240, 60, 800, 600]
+
+class Tutorial_Play():
+    pass

@@ -4,7 +4,14 @@ FPS = 60
 clock = None
 lang = 'en'
 
+# Input Variables
 mouse_pressed = True
+arrow_pressed = {
+    'up' : False,
+    'down' : False,
+    'left' : False,
+    'right' : False
+}
 
 # Mode Variables
 scene = 'title'
@@ -28,6 +35,18 @@ editor = {
     'wall' : [],
     'block' : [],
     'thing' : [],
+}
+
+play = {
+    'player_position' : [],
+    'wall' : [],
+    'block' : [],
+    'thing' : [],
+    'player_speed' : 160,
+    'player_velocity' : [],
+    'gravity' : 600,
+    'jump' : 1,
+    'jump_power' : -400,
 }
 
 save_textbox = ''

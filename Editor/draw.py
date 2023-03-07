@@ -61,7 +61,6 @@ def draw_left_bar():
 
 def draw_game_screen():
     pygame.draw.rect(var.screen, const.Color.black, UI.Game_Screen.rect, 2)
-    var.screen.blit(asset.Img.player, [UI.Game_Screen.rect[0] + var.editor['start_position'][0], UI.Game_Screen.rect[1] + var.editor['start_position'][1]])
 
     for i in range(15):
         for j in range(20):
@@ -71,6 +70,8 @@ def draw_game_screen():
     for i in range(15):
         for j in range(20):
             pygame.draw.rect(var.screen, const.Color.gray, [UI.Game_Screen.rect[0] + j * 40, UI.Game_Screen.rect[1] + i * 40, 40, 40], 1)
+
+    var.screen.blit(asset.Img.player, [UI.Game_Screen.rect[0] + var.editor['start_position'][0], UI.Game_Screen.rect[1] + var.editor['start_position'][1]])
 
 def draw_lower_bar():
     pygame.draw.rect(var.screen, const.Color.black, UI.Lower_Bar.rect, 2)
@@ -114,3 +115,18 @@ def draw_load_window():
 
     if var.load_selected_item > -1:
         pygame.draw.rect(var.screen, const.Color.green, UI.Load_Window.file_list_rect[var.load_selected_item], 2)
+
+def draw_upper_play():
+    var.screen.blit(asset.Img.Icon.play, UI.Upper_Play.play)
+    var.screen.blit(asset.Img.Icon.pause, UI.Upper_Play.pause)
+    var.screen.blit(asset.Img.Icon.stop, UI.Upper_Play.stop)
+
+def draw_game_screen_play():
+    pygame.draw.rect(var.screen, const.Color.black, UI.Game_Screen_Play.rect, 2)
+
+    for i in range(15):
+        for j in range(20):
+            if var.play['block'][i][j] != 0:
+                var.screen.blit(asset.Img.block[var.play['block'][i][j]], [UI.Game_Screen_Play.rect[0] + j * 40, UI.Game_Screen_Play.rect[1] + i * 40])
+
+    var.screen.blit(asset.Img.player, [UI.Game_Screen_Play.rect[0] + var.play['player_position'][0], UI.Game_Screen_Play.rect[1] + var.play['player_position'][1]])

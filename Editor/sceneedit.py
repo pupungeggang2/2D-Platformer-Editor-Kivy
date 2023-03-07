@@ -9,6 +9,7 @@ import json
 import save
 import draw
 import physics
+import editor
 
 def loop():
     display()
@@ -76,6 +77,7 @@ def mouse_up(x, y, button):
                 var.file_name = ''
                 var.editor = json.loads(json.dumps(const.empty_editor))
                 var.pointer_mode = 'pointer'
+                var.tab_mode = 'block'
                 var.selected_block = -1
                 var.selected_thing = -1
                 var.selected_goal = -1
@@ -98,6 +100,12 @@ def mouse_up(x, y, button):
 
             elif physics.point_inside_rect_array(x, y, UI.Upper_Bar.move):
                 var.pointer_mode = 'move'
+
+            elif physics.point_inside_rect_array(x, y, UI.Upper_Bar.play):
+                if editor.map_validity_check():
+                    editor.map_convert()
+                    var.scene = 'play'
+                    var.state = 'play'
 
             # Left Bar
             if physics.point_inside_rect_array(x, y, UI.Left_Bar.rect):
@@ -141,6 +149,7 @@ def mouse_up(x, y, button):
                         save.load_file(var.file_name)
                         var.state = ''
                         var.click_mode = ''
+                        var.tab_mode = 'block'
                         var.selected_block = -1
                         var.selected_thing = -1
                         var.selected_goal = -1

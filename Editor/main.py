@@ -107,5 +107,11 @@ def input_handle():
             elif var.scene == 'play':
                 sceneplay.key_down(key)
 
+        if event.type == pygame.KEYUP:
+            key = event.key
+
+            if var.scene == 'play':
+                sceneplay.key_up(key)
+
 init()
 main()
