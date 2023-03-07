@@ -68,4 +68,5 @@ class Game_Screen_Play():
     rect = [240, 60, 800, 600]
 
 class Tutorial_Play():
-    pass
+    move_key = [20, 60]
+    move_text = [164, 104]

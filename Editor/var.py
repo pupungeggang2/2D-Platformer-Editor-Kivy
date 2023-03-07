@@ -42,13 +42,13 @@ play = {
     'wall' : [],
     'block' : [],
     'thing' : [],
-    'player_speed' : 160,
+    'player_speed' : 200,
     'player_yspeed' : 0,
     'player_ground' : False,
     'terminal_speed' : 800,
-    'gravity' : 600,
+    'gravity' : 1600,
     'player_jump' : 1,
-    'player_jump_power' : -400,
+    'player_jump_power' : -500,
 }
 
 save_textbox = ''

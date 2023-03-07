@@ -21,6 +21,7 @@ def display():
     var.screen.fill(const.Color.white)
     draw.draw_upper_play()
     draw.draw_game_screen_play()
+    draw.draw_tutorial_play()
     pygame.display.flip()
 
 def mouse_up(x, y, button):

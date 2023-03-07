@@ -19,5 +19,7 @@ class Img():
         flag = None
         background = None
 
+        arrow = None
+
     player = None
     block = {}

@@ -130,3 +130,7 @@ def draw_game_screen_play():
                 var.screen.blit(asset.Img.block[var.play['block'][i][j]], [UI.Game_Screen_Play.rect[0] + j * 40, UI.Game_Screen_Play.rect[1] + i * 40])
 
     var.screen.blit(asset.Img.player, [UI.Game_Screen_Play.rect[0] + var.play['player_position'][0], UI.Game_Screen_Play.rect[1] + var.play['player_position'][1]])
+
+def draw_tutorial_play():
+    var.screen.blit(asset.Img.Icon.arrow, UI.Tutorial_Play.move_key)
+    var.screen.blit(const.Font.title.render('Move', False, const.Color.black), UI.Tutorial_Play.move_text)

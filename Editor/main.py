@@ -43,6 +43,8 @@ def load_image():
     asset.Img.Icon.pause = pygame.image.load('Image/Icon/Pause.png')
     asset.Img.Icon.stop = pygame.image.load('Image/Icon/Stop.png')
 
+    asset.Img.Icon.arrow = pygame.image.load('Image/Icon/Arrow.png')
+
     asset.Img.player = pygame.image.load('Image/Player.png')
 
     asset.Img.block[1] = pygame.image.load('Image/Block/Dirt.png')
