@@ -32,3 +32,5 @@ def map_convert():
     var.play['wall'] = json.loads(json.dumps(var.editor['wall']))
     var.play['block'] = json.loads(json.dumps(var.editor['block']))
     var.play['thing'] = json.loads(json.dumps(var.editor['thing']))
+    var.play['player_yspeed'] = 0
+    var.play['player_jump'] = 0

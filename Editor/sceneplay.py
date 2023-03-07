@@ -10,7 +10,8 @@ import physics
 import game
 
 def loop():
-    loop_game()
+    if var.state == 'play':
+        loop_game()
     display()
 
 def loop_game():
@@ -28,6 +29,12 @@ def mouse_up(x, y, button):
             var.scene = 'edit'
             var.state = ''
 
+        elif physics.point_inside_rect_array(x, y, UI.Upper_Play.play):
+            var.state = 'play'
+
+        elif physics.point_inside_rect_array(x, y, UI.Upper_Play.pause):
+            var.state = 'pause'
+
 def key_down(key):
     if var.state == 'play':
         if key == pygame.K_w or key == pygame.K_UP:
@@ -41,6 +48,9 @@ def key_down(key):
 
         if key == pygame.K_d or key == pygame.K_RIGHT:
             var.arrow_pressed['right'] = True
+
+        if key == pygame.K_SPACE:
+            game.jump()
 
 def key_up(key):
     if var.state == 'play':

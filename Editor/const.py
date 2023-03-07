@@ -13,6 +13,11 @@ button_list_block = [1, 2]
 button_list_thing = []
 button_list_goal = []
 
+collide_bottom_rect = [-16, 40, 72, 16]
+collide_top_rect = [-16, -16, 72, 16]
+collide_right_rect = [40, -16, 16, 72]
+collide_left_rect = [-16, -16, 16, 72]
+
 empty_editor = {
     'start_position' : [0, 0],
     'wall' : [
