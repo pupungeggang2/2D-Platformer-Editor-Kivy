@@ -15,6 +15,15 @@ def find_surrounding_cells(position):
 
     return row_col_list
 
+def player_defeat_check():
+    if var.play['player_position'][1] > 600:
+        return True
+    
+    return False
+
+def player_win_check():
+    pass
+
 def player_move():
     temp_position = [var.play['player_position'][0], var.play['player_position'][1]]
 

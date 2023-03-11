@@ -59,6 +59,15 @@ def draw_left_bar():
             column = var.selected_block % 6
             pygame.draw.rect(var.screen, const.Color.green, [UI.Left_Bar.button_start[0] + column * 80, UI.Left_Bar.button_start[1] + row * 80, 80, 80], 2)
 
+    elif var.tab_mode == 'thing':
+        pygame.draw.rect(var.screen, const.Color.green, UI.Left_Bar.tab_thing, 2)
+
+    elif var.tab_mode == 'goal':
+        pygame.draw.rect(var.screen, const.Color.green, UI.Left_Bar.tab_goal, 2)
+
+    elif var.tab_mode == 'background':
+        pygame.draw.rect(var.screen, const.Color.green, UI.Left_Bar.tab_background, 2)
+
 def draw_game_screen():
     pygame.draw.rect(var.screen, const.Color.black, UI.Game_Screen.rect, 2)
 
@@ -134,3 +143,8 @@ def draw_game_screen_play():
 def draw_tutorial_play():
     var.screen.blit(asset.Img.Icon.arrow, UI.Tutorial_Play.move_key)
     var.screen.blit(const.Font.title.render('Move', False, const.Color.black), UI.Tutorial_Play.move_text)
+    var.screen.blit(asset.Img.Icon.space, UI.Tutorial_Play.space_key)
+    var.screen.blit(const.Font.title.render('Jump', False, const.Color.black), UI.Tutorial_Play.space_text)
+
+def draw_defeat_text():
+    var.screen.blit(const.Font.title.render('Defeat', False, const.Color.black), UI.Tutorial_Play.result_text)

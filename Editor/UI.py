@@ -70,3 +70,6 @@ class Game_Screen_Play():
 class Tutorial_Play():
     move_key = [20, 60]
     move_text = [164, 104]
+    space_key = [20, 180]
+    space_text = [164, 184]
+    result_text = [20, 264]

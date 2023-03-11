@@ -108,6 +108,18 @@ def mouse_up(x, y, button):
                     var.state = 'play'
 
             # Left Bar
+            if physics.point_inside_rect_array(x, y, UI.Left_Bar.tab_block):
+                var.tab_mode = 'block'
+
+            elif physics.point_inside_rect_array(x, y, UI.Left_Bar.tab_thing):
+                var.tab_mode = 'thing'
+
+            elif physics.point_inside_rect_array(x, y, UI.Left_Bar.tab_goal):
+                var.tab_mode = 'goal'
+
+            elif physics.point_inside_rect_array(x, y, UI.Left_Bar.tab_background):
+                var.tab_mode = 'background'
+
             if physics.point_inside_rect_array(x, y, UI.Left_Bar.rect):
                 if var.tab_mode == 'block':
                     for i in range(0, len(const.button_list_block)):

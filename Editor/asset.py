@@ -20,6 +20,7 @@ class Img():
         background = None
 
         arrow = None
+        space = None
 
     player = None
     block = {}
