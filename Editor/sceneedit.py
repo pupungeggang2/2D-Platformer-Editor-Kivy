@@ -107,6 +107,10 @@ def mouse_up(x, y, button):
                     var.scene = 'play'
                     var.state = 'play'
 
+            elif physics.point_inside_rect_array(x, y, UI.Upper_Bar.close):
+                var.scene = 'title'
+                var.state = ''
+
             # Left Bar
             if physics.point_inside_rect_array(x, y, UI.Left_Bar.tab_block):
                 var.tab_mode = 'block'
@@ -154,6 +158,16 @@ def mouse_up(x, y, button):
                 if physics.point_inside_rect_array(x, y, UI.Load_Window.file_list_rect[i]):
                     if var.load_page_number * 6 + i < len(var.file_list):
                         var.load_selected_item = i
+
+                if physics.point_inside_rect_array(x, y, UI.Load_Window.button_next):
+                    page_num_max = len(var.file_list) // 6
+                    
+                    if var.load_page_number + 1 <= page_num_max:
+                        var.load_page_number += 1
+
+                if physics.point_inside_rect_array(x, y, UI.Load_Window.button_prev):
+                    if var.load_page_number > 0:
+                        var.load_page_number -= 1
 
                 if physics.point_inside_rect_array(x, y, UI.Load_Window.load_button):
                     if var.load_selected_item > -1:

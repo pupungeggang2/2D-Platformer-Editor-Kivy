@@ -11,6 +11,8 @@ class Img():
         play = None
         pause = None
         stop = None
+        prev = None
+        next = None
 
         close = None
 

@@ -15,6 +15,7 @@ def draw_upper_bar():
     var.screen.blit(asset.Img.Icon.erase, UI.Upper_Bar.erase)
     var.screen.blit(asset.Img.Icon.move, UI.Upper_Bar.move)
     var.screen.blit(asset.Img.Icon.play, UI.Upper_Bar.play)
+    var.screen.blit(asset.Img.Icon.close, UI.Upper_Bar.close)
 
     if var.pointer_mode == 'pointer':
         pygame.draw.rect(var.screen, const.Color.green, UI.Upper_Bar.pointer, 2)
@@ -116,7 +117,7 @@ def draw_load_window():
         pygame.draw.rect(var.screen, const.Color.black, UI.Load_Window.file_list_rect[i], 2)
 
     for i in range(6):
-        if i < len(var.file_list):
+        if var.load_page_number * 6 + i < len(var.file_list):
             var.screen.blit(const.Font.title.render(var.file_list[var.load_page_number * 6 + i], False, const.Color.black), UI.Load_Window.file_list_text[i])
 
     pygame.draw.rect(var.screen, const.Color.black, UI.Load_Window.load_button, 2)
@@ -124,6 +125,11 @@ def draw_load_window():
 
     if var.load_selected_item > -1:
         pygame.draw.rect(var.screen, const.Color.green, UI.Load_Window.file_list_rect[var.load_selected_item], 2)
+
+    var.screen.blit(asset.Img.Icon.prev, UI.Load_Window.button_prev)
+    var.screen.blit(asset.Img.Icon.next, UI.Load_Window.button_next)
+    page_num_max = len(var.file_list) // 6
+    var.screen.blit(const.Font.title.render(str(var.load_page_number + 1) + '/' + str(page_num_max + 1), False, const.Color.black), UI.Load_Window.page_number)
 
 def draw_upper_play():
     var.screen.blit(asset.Img.Icon.play, UI.Upper_Play.play)
