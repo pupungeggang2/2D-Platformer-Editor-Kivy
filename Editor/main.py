@@ -53,6 +53,17 @@ def load_image():
     asset.Img.block[1] = pygame.image.load('Image/Block/Dirt.png')
     asset.Img.block[2] = pygame.image.load('Image/Block/Grass.png')
 
+    asset.Img.thing[101] = pygame.image.load('Image/Goal/Flag.png')
+    asset.Img.thing[102] = pygame.image.load('Image/Goal/Goal.png')
+
+    asset.Img.background[1] = pygame.image.load('Image/Background/BackgroundField.png')
+    asset.Img.background[2] = pygame.image.load('Image/Background/BackgroundCave.png')
+
+    asset.Img.background_icon[1] = pygame.image.load('Image/Background/IconField.png')
+    asset.Img.background_icon[2] = pygame.image.load('Image/Background/IconCave.png')
+
+    asset.Img.background_title = pygame.image.load('Image/Background/BackgroundTitle.png')
+
 def main():
     while True:
         var.clock.tick(60)

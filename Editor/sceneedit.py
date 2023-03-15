@@ -30,33 +30,57 @@ def display():
 
     pygame.display.flip()
 
+def edit_tile(x, y):
+    if physics.point_inside_rect_array(x, y, UI.Game_Screen.rect):
+        if var.pointer_mode == 'brush':
+            if var.tab_mode == 'block':
+                if var.selected_block != -1:
+                    row = (y - UI.Game_Screen.rect[1]) // 40
+                    column = (x - UI.Game_Screen.rect[0]) // 40
+
+                    var.editor['block'][row][column] = const.button_list_block[var.selected_block]
+                    var.editor['wall'][row][column] = 1
+
+            elif var.tab_mode == 'goal':
+                if var.selected_goal != -1:
+                    row = (y - UI.Game_Screen.rect[1]) // 40
+                    column = (x - UI.Game_Screen.rect[0]) // 40
+
+                    temp_goal = {'ID' : const.button_list_goal[var.selected_goal], 'rect' : [column * 40, row * 40, 40, 40]}
+                    var.editor['thing'].append(temp_goal)
+
+        elif var.pointer_mode == 'erase':
+            if var.tab_mode == 'block':
+                row = (y - UI.Game_Screen.rect[1]) // 40
+                column = (x - UI.Game_Screen.rect[0]) // 40
+                var.editor['block'][row][column] = 0
+                var.editor['wall'][row][column] = 0
+
+            elif var.tab_mode == 'goal':
+                screen_x = x - UI.Game_Screen.rect[0]
+                screen_y = y - UI.Game_Screen.rect[1]
+
+                for i in range(len(var.editor['thing'])):
+                    if physics.point_inside_rect_array(screen_x, screen_y, var.editor['thing'][i]['rect']):
+                        var.editor['thing'].pop(i)
+                        break
+
+        elif var.pointer_mode == 'move':
+            if physics.point_inside_rect_array(x, y, UI.Game_Screen.rect):
+                if x - UI.Game_Screen.rect[0] - 16 >= 0 and x - UI.Game_Screen.rect[0] - 16 <= 768 and y - UI.Game_Screen.rect[1] - 16 >= 0 and y - UI.Game_Screen.rect[1] - 16 <= 568:
+                    var.editor['start_position'] = [x - UI.Game_Screen.rect[0] - 16, y - UI.Game_Screen.rect[1] - 16]
+
 def mouse_down(x, y, button):
     if button == 1:
         var.mouse_pressed = True
 
+        if var.state == '':
+            edit_tile(x, y)
+
 def mouse_motion(x, y):
     if var.mouse_pressed == True:
-        if physics.point_inside_rect_array(x, y, UI.Game_Screen.rect):
-            if var.pointer_mode == 'brush':
-                if var.tab_mode == 'block':
-                    if var.selected_block != -1:
-                        row = (y - UI.Game_Screen.rect[1]) // 40
-                        column = (x - UI.Game_Screen.rect[0]) // 40
-
-                        var.editor['block'][row][column] = const.button_list_block[var.selected_block]
-                        var.editor['wall'][row][column] = 1
-
-            elif var.pointer_mode == 'erase':
-                if var.tab_mode == 'block':
-                    row = (y - UI.Game_Screen.rect[1]) // 40
-                    column = (x - UI.Game_Screen.rect[0]) // 40
-                    var.editor['block'][row][column] = 0
-                    var.editor['wall'][row][column] = 0
-
-            elif var.pointer_mode == 'move':
-                if physics.point_inside_rect_array(x, y, UI.Game_Screen.rect):
-                    if x - UI.Game_Screen.rect[0] - 16 >= 0 and x - UI.Game_Screen.rect[0] - 16 <= 768 and y - UI.Game_Screen.rect[1] - 16 >= 0 and y - UI.Game_Screen.rect[1] - 16 <= 568:
-                        var.editor['start_position'] = [x - UI.Game_Screen.rect[0] - 16, y - UI.Game_Screen.rect[1] - 16]
+        if var.state == '':
+            edit_tile(x, y)
 
 def mouse_up(x, y, button):
     if button == 1:
@@ -126,12 +150,37 @@ def mouse_up(x, y, button):
 
             if physics.point_inside_rect_array(x, y, UI.Left_Bar.rect):
                 if var.tab_mode == 'block':
-                    for i in range(0, len(const.button_list_block)):
+                    for i in range(len(const.button_list_block)):
                         row = i // 6
                         column = i % 6
                         
                         if physics.point_inside_rect(x, y, UI.Left_Bar.button_start[0] + column * 80, UI.Left_Bar.button_start[1] + row * 80, 80, 80):
-                            var.selected_block = i
+                            if i == var.selected_block:
+                                var.selected_block = -1
+                            else:
+                                var.selected_block = i
+
+                elif var.tab_mode == 'thing':
+                    pass
+
+                elif var.tab_mode == 'goal':
+                    for i in range(len(const.button_list_goal)):
+                        row = i // 6
+                        column = i % 6
+
+                        if physics.point_inside_rect(x, y, UI.Left_Bar.button_start[0] + column * 80, UI.Left_Bar.button_start[1] + row * 80, 80, 80):
+                            if i == var.selected_goal:
+                                var.selected_goal = -1
+                            else:
+                                var.selected_goal = i
+
+                elif var.tab_mode == 'background':
+                    for i in range(len(const.button_list_background)):
+                        row = i // 6
+                        column = i % 6
+
+                        if physics.point_inside_rect(x, y, UI.Left_Bar.button_start[0] + column * 80, UI.Left_Bar.button_start[1] + row * 80, 80, 80):
+                            var.editor['background'] = const.button_list_background[i]
 
         elif var.state == 'save':
             if physics.point_inside_rect_array(x, y, UI.Save_Window.close):

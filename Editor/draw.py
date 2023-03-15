@@ -63,19 +63,54 @@ def draw_left_bar():
     elif var.tab_mode == 'thing':
         pygame.draw.rect(var.screen, const.Color.green, UI.Left_Bar.tab_thing, 2)
 
+        for i in range(0, len(const.button_list_thing)):
+            row = i // 6
+            column = i % 6
+
+            pygame.draw.rect(var.screen, const.Color.black, [UI.Left_Bar.button_start[0] + column * 80, UI.Left_Bar.button_start[1] + row * 80, 80, 80], 2)
+
+        if var.selected_thing != -1:
+            row = var.selected_thing // 6
+            column = var.selected_thing % 6
+            pygame.draw.rect(var.screen, const.Color.green, [UI.Left_Bar.button_start[0] + column * 80, UI.Left_Bar.button_start[1] + row * 80, 80, 80], 2)
+
+
     elif var.tab_mode == 'goal':
         pygame.draw.rect(var.screen, const.Color.green, UI.Left_Bar.tab_goal, 2)
+
+        for i in range(0, len(const.button_list_goal)):
+            row = i // 6
+            column = i % 6
+
+            pygame.draw.rect(var.screen, const.Color.black, [UI.Left_Bar.button_start[0] + column * 80, UI.Left_Bar.button_start[1] + row * 80, 80, 80], 2)
+            var.screen.blit(asset.Img.thing[const.button_list_goal[i]], [UI.Left_Bar.button_start[0] + column * 80 + 20, UI.Left_Bar.button_start[1] + row * 80 + 20])
+
+        if var.selected_goal != -1:
+            row = var.selected_goal // 6
+            column = var.selected_goal % 6
+            pygame.draw.rect(var.screen, const.Color.green, [UI.Left_Bar.button_start[0] + column * 80, UI.Left_Bar.button_start[1] + row * 80, 80, 80], 2)
 
     elif var.tab_mode == 'background':
         pygame.draw.rect(var.screen, const.Color.green, UI.Left_Bar.tab_background, 2)
 
+        for i in range(0, len(const.button_list_background)):
+            row = i // 6
+            column = i % 6
+
+            pygame.draw.rect(var.screen, const.Color.black, [UI.Left_Bar.button_start[0] + column * 80, UI.Left_Bar.button_start[1] + row * 80, 80, 80], 2)
+            var.screen.blit(asset.Img.background_icon[const.button_list_background[i]], [UI.Left_Bar.button_start[0] + column * 80 + 20, UI.Left_Bar.button_start[1] + row * 80 + 20])
+
 def draw_game_screen():
+    var.screen.blit(asset.Img.background[var.editor['background']], UI.Game_Screen.rect[:2])
     pygame.draw.rect(var.screen, const.Color.black, UI.Game_Screen.rect, 2)
 
     for i in range(15):
         for j in range(20):
             if var.editor['block'][i][j] != 0:
                 var.screen.blit(asset.Img.block[var.editor['block'][i][j]], [UI.Game_Screen.rect[0] + j * 40, UI.Game_Screen.rect[1] + i * 40])
+
+    for i in range(len(var.editor['thing'])):
+        var.screen.blit(asset.Img.thing[var.editor['thing'][i]['ID']], [UI.Game_Screen.rect[0] + var.editor['thing'][i]['rect'][0], UI.Game_Screen.rect[1] + var.editor['thing'][i]['rect'][1]])
 
     for i in range(15):
         for j in range(20):
@@ -137,12 +172,16 @@ def draw_upper_play():
     var.screen.blit(asset.Img.Icon.stop, UI.Upper_Play.stop)
 
 def draw_game_screen_play():
+    var.screen.blit(asset.Img.background[var.editor['background']], UI.Game_Screen_Play.rect[:2])
     pygame.draw.rect(var.screen, const.Color.black, UI.Game_Screen_Play.rect, 2)
 
     for i in range(15):
         for j in range(20):
             if var.play['block'][i][j] != 0:
                 var.screen.blit(asset.Img.block[var.play['block'][i][j]], [UI.Game_Screen_Play.rect[0] + j * 40, UI.Game_Screen_Play.rect[1] + i * 40])
+
+    for i in range(len(var.editor['thing'])):
+        var.screen.blit(asset.Img.thing[var.editor['thing'][i]['ID']], [UI.Game_Screen_Play.rect[0] + var.editor['thing'][i]['rect'][0], UI.Game_Screen_Play.rect[1] + var.editor['thing'][i]['rect'][1]])
 
     var.screen.blit(asset.Img.player, [UI.Game_Screen_Play.rect[0] + var.play['player_position'][0], UI.Game_Screen_Play.rect[1] + var.play['player_position'][1]])
 
@@ -152,5 +191,11 @@ def draw_tutorial_play():
     var.screen.blit(asset.Img.Icon.space, UI.Tutorial_Play.space_key)
     var.screen.blit(const.Font.title.render('Jump', False, const.Color.black), UI.Tutorial_Play.space_text)
 
+def draw_lower_play():
+    pygame.draw.rect(var.screen, const.Color.white, UI.Lower_Play.rect)
+
 def draw_defeat_text():
     var.screen.blit(const.Font.title.render('Defeat', False, const.Color.black), UI.Tutorial_Play.result_text)
+
+def draw_win_text():
+    var.screen.blit(const.Font.title.render('Win', False, const.Color.black), UI.Tutorial_Play.result_text)

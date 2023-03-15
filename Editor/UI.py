@@ -1,3 +1,4 @@
+origin = [0, 0]
 title_text = [8, 8]
 new_button = [480, 320, 320, 80]
 new_text = [504, 344]
@@ -67,6 +68,9 @@ class Upper_Play():
     play = [580, 0, 40, 40]
     pause = [620, 0, 40, 40]
     stop = [660, 0, 40, 40]
+
+class Lower_Play():
+    rect = [0, 660, 1280, 60]
 
 class Game_Screen_Play():
     rect = [240, 60, 800, 600]

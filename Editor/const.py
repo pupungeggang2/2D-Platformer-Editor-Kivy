@@ -11,7 +11,8 @@ class Font():
 
 button_list_block = [1, 2]
 button_list_thing = []
-button_list_goal = []
+button_list_goal = [101, 102]
+button_list_background = [1, 2]
 
 collide_bottom_rect = [-16, 40, 72, 16]
 collide_top_rect = [-16, -16, 72, 16]
@@ -57,4 +58,5 @@ empty_editor = {
     ],
 
     'thing' : [],
+    'background' : 1,
 }

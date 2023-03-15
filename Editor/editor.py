@@ -34,3 +34,9 @@ def map_convert():
     var.play['thing'] = json.loads(json.dumps(var.editor['thing']))
     var.play['player_yspeed'] = 0
     var.play['player_jump'] = 0
+    var.play['background'] = json.loads(json.dumps(var.editor['background']))
+
+    var.arrow_pressed['up'] = False
+    var.arrow_pressed['down'] = False
+    var.arrow_pressed['left'] = False
+    var.arrow_pressed['right'] = False

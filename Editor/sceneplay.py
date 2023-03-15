@@ -18,6 +18,9 @@ def loop():
 def loop_game():
     if game.player_defeat_check() == True:
         var.state = 'defeat'
+    elif game.player_win_check() == True:
+        var.state = 'win'
+
     game.player_move()
 
 def display():
@@ -25,9 +28,13 @@ def display():
     draw.draw_upper_play()
     draw.draw_game_screen_play()
     draw.draw_tutorial_play()
+    draw.draw_lower_play()
 
     if var.state == 'defeat':
         draw.draw_defeat_text()
+
+    elif var.state == 'win':
+        draw.draw_win_text()
 
     pygame.display.flip()
 
@@ -44,7 +51,7 @@ def mouse_up(x, y, button):
                 var.scene = 'edit'
                 var.state = ''
 
-        elif var.state == 'defeat':
+        elif var.state == 'defeat' or var.state == 'win':
             if physics.point_inside_rect_array(x, y, UI.Upper_Play.play):
                 editor.map_convert()
                 var.state = 'play'

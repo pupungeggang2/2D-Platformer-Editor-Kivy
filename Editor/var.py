@@ -35,6 +35,7 @@ editor = {
     'wall' : [],
     'block' : [],
     'thing' : [],
+    'background' : 1,
 }
 
 play = {

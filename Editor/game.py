@@ -22,7 +22,14 @@ def player_defeat_check():
     return False
 
 def player_win_check():
-    pass
+    player_center = [var.play['player_position'][0] + 16, var.play['player_position'][1] + 16]
+
+    for i in range(len(var.play['thing'])):
+        if var.play['thing'][i]['ID'] == 102:
+            if physics.point_inside_rect_array(player_center[0], player_center[1], var.play['thing'][i]['rect']):
+                return True
+            
+    return False
 
 def player_move():
     temp_position = [var.play['player_position'][0], var.play['player_position'][1]]

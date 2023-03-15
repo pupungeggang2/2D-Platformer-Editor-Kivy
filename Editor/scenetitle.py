@@ -14,11 +14,13 @@ def loop():
     display()
 
 def display():
-    var.screen.fill(const.Color.white)
+    var.screen.blit(asset.Img.background_title, UI.origin)
     var.screen.blit(const.Font.title.render('2D Platformer Editor', False, const.Color.black), UI.title_text)
     
+    pygame.draw.rect(var.screen, const.Color.white, UI.new_button)
     pygame.draw.rect(var.screen, const.Color.black, UI.new_button, 2)
     var.screen.blit(const.Font.title.render('New File', False, const.Color.black), UI.new_text)
+    pygame.draw.rect(var.screen, const.Color.white, UI.load_button)
     pygame.draw.rect(var.screen, const.Color.black, UI.load_button, 2)
     var.screen.blit(const.Font.title.render('Load File', False, const.Color.black), UI.load_text)
 

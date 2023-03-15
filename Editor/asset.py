@@ -26,3 +26,7 @@ class Img():
 
     player = None
     block = {}
+    thing = {}
+    background = {}
+    background_icon = {}
+    background_title = None
